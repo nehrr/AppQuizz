@@ -13,14 +13,17 @@
     <TextView
             android:text="TextView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/a1"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/a1"/>
     <TextView
             android:text="TextView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/a2"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/a2"/>
     <TextView
             android:text="TextView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/a3"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/a3"/>
 
 </LinearLayout>

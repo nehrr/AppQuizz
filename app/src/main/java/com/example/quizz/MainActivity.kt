@@ -34,8 +34,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        val nickname = intent.getStringExtra("nickname")
-        this.nickname = nickname
+        this.nickname = User.nickname
         question.text = map[this.ind]?.question
         answer1.text = map[this.ind]?.a1
         answer2.text = map[this.ind]?.a2
@@ -86,7 +85,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(intent)
             }
             R.id.nav_admin -> {
-                val intent = Intent(this, AdminActivity::class.java).apply {
+                val intent = Intent(this, MainAdminActivity::class.java).apply {
                 }
                 startActivity(intent)
 

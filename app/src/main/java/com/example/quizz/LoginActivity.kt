@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -15,10 +16,17 @@ class LoginActivity : AppCompatActivity() {
 
     fun sendNickname(view: View) {
         val nickname = loginName.text.toString()
-        val intent = Intent(this, MainActivity::class.java).apply {
-            putExtra("nickname", nickname)
+
+        if (nickname == "") {
+            Toast.makeText(applicationContext,"Your nickname cannot be null",
+                Toast.LENGTH_SHORT).show()
+
+        } else {
+            val intent = Intent(this, MainActivity::class.java).apply {
+                User.nickname = nickname
+            }
+            startActivity(intent)
         }
-        startActivity(intent)
     }
 
 }
