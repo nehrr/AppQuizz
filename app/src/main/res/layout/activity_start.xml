@@ -12,7 +12,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/startText" android:textSize="20sp" android:layout_marginTop="16dp"
+            android:id="@+id/startText" android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/hiText"/>
     <Button
             android:text="Start"
@@ -22,11 +22,11 @@
             android:id="@+id/buttonStart" android:layout_marginTop="32dp"
             app:layout_constraintTop_toBottomOf="@+id/startText" android:textAllCaps="false"
             android:background="@android:color/holo_blue_dark" android:textColor="@android:color/white"
-            android:onClick="getToQuestions" android:textSize="20sp"/>
+            android:onClick="getToQuestions"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/hiText" android:layout_marginTop="32dp" app:layout_constraintTop_toTopOf="parent"
-            android:textSize="20sp"/>
+            />
 </androidx.constraintlayout.widget.ConstraintLayout>

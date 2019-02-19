@@ -45,13 +45,14 @@ class QuestionAdapter(val items: MutableList<Question>, val context: Context) : 
     }
 
     fun removeItem(position: Int, holder: ViewHolder) {
-        Questions.map.removeAt(position)
         holder.a1.setTextColor(Color.parseColor("#808080"))
         holder.a2.setTextColor(Color.parseColor("#808080"))
-        holder.a2.setTextColor(Color.parseColor("#808080"))
+        holder.a3.setTextColor(Color.parseColor("#808080"))
         holder.a1.setTypeface(Typeface.DEFAULT)
         holder.a2.setTypeface(Typeface.DEFAULT)
         holder.a3.setTypeface(Typeface.DEFAULT)
+
+        Questions.map.removeAt(position)
 
         if (items[position]?.solution == "a1") {
             holder.a1.setTextColor(Color.parseColor("#22722c"))
