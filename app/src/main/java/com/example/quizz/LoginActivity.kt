@@ -3,9 +3,11 @@ package com.example.quizz
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.nav_header_main.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -22,8 +24,8 @@ class LoginActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT).show()
 
         } else {
+            User.nickname = nickname
             val intent = Intent(this, MainActivity::class.java).apply {
-                User.nickname = nickname
             }
             startActivity(intent)
         }

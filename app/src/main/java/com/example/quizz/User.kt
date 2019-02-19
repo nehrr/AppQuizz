@@ -1,5 +1,6 @@
 package com.example.quizz
 
 object User {
-    var nickname = ""
+    var nickname = "Test"
+    var bestScore = 0
 }

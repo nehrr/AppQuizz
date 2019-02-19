@@ -10,33 +10,44 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.nav_header_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     var ind = 0
     var points: Int = 0
-    var nickname: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        this.nickname = User.nickname
         question.text = Questions.map[this.ind]?.question
         answer1.text = Questions.map[this.ind]?.a1
         answer2.text = Questions.map[this.ind]?.a2
         answer3.text = Questions.map[this.ind]?.a3
         scorePoints.text = this.points.toString()
 
+
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
+
+        val navigationView = findViewById<NavigationView>(R.id.nav_view)
+        val header = navigationView.getHeaderView(0)
+        val name = header.findViewById<TextView>(R.id.username)
+        val score = header.findViewById<TextView>(R.id.bestScoreText)
+
+        name.text = "Hello ${User.nickname}"
+        score.text = "Personal best: ${User.bestScore}"
+
+
 
         nav_view.setNavigationItemSelectedListener(this)
     }
@@ -54,20 +65,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.action_settings -> return true
-            else -> return super.onOptionsItemSelected(item)
-        }
-    }
-
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_profile -> {
                 val intent = Intent(this, ProfileActivity::class.java).apply {
-                    val profileName = nickname
-                    putExtra("nickname", nickname)
             }
                 startActivity(intent)
             }
@@ -75,13 +77,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val intent = Intent(this, MainAdminActivity::class.java).apply {
                 }
                 startActivity(intent)
-
-            }
-
-            R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
 
             }
         }
@@ -106,7 +101,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             this.ind++
         } else {
             this.ind = 0
-            Toast.makeText(applicationContext, "Congrats, you finished the game with ${this.points} points", Toast.LENGTH_SHORT).show()
+
+            if (this.points > User.bestScore) {
+                Toast.makeText(applicationContext, "Congrats, you finished the game with ${this.points} and beat your previous high score (${User.bestScore}), your newest high score is ${this.points}", Toast.LENGTH_SHORT).show()
+                User.bestScore = this.points
+
+            } else {
+                Toast.makeText(applicationContext, "Congrats, you finished the game with ${this.points}, but you did not beat your high score (${User.bestScore}, try harder next time", Toast.LENGTH_SHORT).show()
+            }
             this.points = 0
         }
 
