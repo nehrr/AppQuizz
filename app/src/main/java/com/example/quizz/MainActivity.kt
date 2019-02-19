@@ -131,6 +131,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 Toast.makeText(applicationContext, "Congrats, you finished the game with ${this.points}, but you did not beat your high score (${User.bestScore}, try harder next time", Toast.LENGTH_SHORT).show()
             }
             this.points = 0
+            
+            val navigationView = findViewById<NavigationView>(R.id.nav_view)
+            val header = navigationView.getHeaderView(0)
+            val score = header.findViewById<TextView>(R.id.bestScoreText)
+
+            score.text = "Personal best: ${User.bestScore}"
         }
 
         question.text = Questions.map[this.ind]?.question

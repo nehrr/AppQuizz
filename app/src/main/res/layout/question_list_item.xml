@@ -28,7 +28,8 @@
     <Button
             android:text="Delete"
             android:textAllCaps="false"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
+            android:layout_marginTop="8dp"
             android:layout_height="wrap_content" android:id="@+id/deleteButton"
             android:background="@android:color/holo_red_dark" android:textColor="@android:color/white"/>
 

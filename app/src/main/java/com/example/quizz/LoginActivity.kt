@@ -25,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
 
         } else {
             User.nickname = nickname
-            val intent = Intent(this, MainActivity::class.java).apply {
+            val intent = Intent(this, StartActivity::class.java).apply {
             }
             startActivity(intent)
         }

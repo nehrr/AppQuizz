@@ -16,6 +16,7 @@ class MainAdminActivity : AppCompatActivity() {
 
         question_list.layoutManager = LinearLayoutManager(this)
         question_list.adapter = QuestionAdapter(Questions.map, this)
+
     }
 
     fun toAdd(view: View) {

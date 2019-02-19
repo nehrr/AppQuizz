@@ -13,6 +13,7 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_profile)
 
         profileName.text = User.nickname
+        bestScore.text = User.bestScore.toString()
     }
 
     fun updateUsername(view: View) {
