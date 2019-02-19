@@ -8,5 +8,5 @@ object Questions {
     val q5: Question = Question("This is test question 5", "Wrong", "Wrong", "Right", "a3")
     val q6: Question = Question("This is test question 6", "Wrong", "Wrong", "Right", "a3")
 
-    var map: HashMap<Int, Question> = hashMapOf(0 to q1, 1 to q2, 2 to q3, 3 to q4, 4 to q5, 5 to q6)
+    var map: MutableList<Question> = mutableListOf(q1, q2, q3, q4, q5, q6)
 }

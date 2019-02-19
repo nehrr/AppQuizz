@@ -9,7 +9,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_admin.*
 
 class AdminActivity : AppCompatActivity() {
-    var map: HashMap<Int, Question> = Questions.map
+    var map: MutableList<Question> = Questions.map
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,10 +31,8 @@ class AdminActivity : AppCompatActivity() {
         if (q != "" && a1 != "" && a2 != "" && a3 != "" && solution != "") {
 
             val newQ = Question(q, a1, a2, a3, solution)
-            var idx = map.size
-            idx++
 
-            map.put(idx, newQ)
+            map.add(newQ)
 
             Toast.makeText(applicationContext,"Your question was added!",
                 Toast.LENGTH_SHORT).show()
