@@ -1,6 +1,8 @@
 package com.example.quizz
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import com.google.android.material.navigation.NavigationView
@@ -12,9 +14,10 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.nav_header_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -26,11 +29,29 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        question.text = Questions.map[this.ind]?.question
-        answer1.text = Questions.map[this.ind]?.a1
-        answer2.text = Questions.map[this.ind]?.a2
-        answer3.text = Questions.map[this.ind]?.a3
-        scorePoints.text = this.points.toString()
+        if (Questions.map.size > 0) {
+
+            question.text = Questions.map[this.ind]?.question
+            answer1.text = Questions.map[this.ind]?.a1
+            answer2.text = Questions.map[this.ind]?.a2
+            answer3.text = Questions.map[this.ind]?.a3
+            scorePoints.text = this.points.toString()
+
+        } else {
+
+            question.isVisible = false
+            answer1.isVisible = false
+            answer2.isVisible = false
+            answer3.isVisible = false
+            answers_label.isVisible = false
+            scoreText.isVisible = false
+            a1.isVisible = false
+            a2.isVisible = false
+            a3.isVisible = false
+
+            question_label.text = "There are no questions available"
+        }
+
 
 
         val toggle = ActionBarDrawerToggle(
@@ -92,7 +113,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             this.points++
             Toast.makeText(applicationContext, "Good job, you now have ${this.points} points", Toast.LENGTH_SHORT).show()
         } else {
-            //if (this.points > 0) this.points-- else this.points = 0
+            if (this.points > 0) this.points-- else this.points = 0
             Toast.makeText(applicationContext, "Sorry, you got the wrong answer", Toast.LENGTH_SHORT).show()
         }
 
